@@ -10,6 +10,9 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from news_api import fetch_company_esg_news
 
 st.set_page_config(page_title="ESG 新闻实时监测工具", layout="centered")
+
+st.markdown("[🔙 返回 ESG 主站](https://velika02.github.io/5105-esg-dashboard/)", unsafe_allow_html=True)
+
 st.title("🌍 ESG 新闻实时监测工具")
 
 st.markdown("""
