@@ -1,38 +1,39 @@
-# real-time/app.py - ESG 新闻实时监测功能（只展示 ESG 新闻，不提取风险事件）
+# real-time/app.py - ESG Real-Time News Monitor (displays ESG news, no risk extraction)
 
 import streamlit as st
 import os
 import sys
 
-# 添加上级路径以导入模块
+# Add parent path for module imports
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from news_api import fetch_company_esg_news
 
-st.set_page_config(page_title="ESG 新闻实时监测工具", layout="centered")
+st.set_page_config(page_title="ESG Real-Time News Monitor", layout="centered")
 
-st.markdown("[🔙 返回 ESG 主站](https://velika02.github.io/5105-esg-dashboard/)", unsafe_allow_html=True)
+st.markdown("[🔙 Back to ESG Main Site](https://velika02.github.io/5105-esg-dashboard/)", unsafe_allow_html=True)
 
-st.title("🌍 ESG 新闻实时监测工具")
+st.title("🌍 ESG Real-Time News Monitor")
 
 st.markdown("""
-通过公司名称获取 ESG 相关新闻。
+Retrieve recent ESG-related news based on company name.
 """)
 
-# 输入参数
-company = st.text_input("请输入公司名称", "Nestle")
-max_articles = st.slider("最多拉取新闻篇数", 1, 20, 5)
+# Input
+company = st.text_input("Enter company name", "Nestle")
+max_articles = st.slider("Maximum number of articles", 1, 20, 5)
 
 if company:
-    with st.spinner("🔍 正在拉取新闻..."):
+    with st.spinner("🔍 Fetching ESG news..."):
 
-        # 获取新闻
+        # Fetch news
         news_list = fetch_company_esg_news(company, max_results=max_articles)
 
         if not news_list:
-            st.warning("❗ 未能获取相关新闻，请确认公司名称是否准确或网络是否连通。")
+            st.warning("❗ No relevant news found. Please check the company name or your network connection.")
         else:
             for article in news_list:
                 st.markdown(f"### 📰 {article['title']}")
                 st.write(article['content'])
-                st.markdown(f"[🔗 阅读原文]({article['url']})")
+                st.markdown(f"[🔗 Read full article]({article['url']})")
+
