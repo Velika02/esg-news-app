@@ -7,7 +7,7 @@ import sys
 # 添加上级路径以导入模块
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from apis.news_api import fetch_company_esg_news
+from news_api import fetch_company_esg_news
 
 st.set_page_config(page_title="ESG 新闻实时监测工具", layout="centered")
 st.title("🌍 ESG 新闻实时监测工具")
