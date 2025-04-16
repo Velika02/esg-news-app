@@ -1,14 +1,16 @@
 # apis/news_api.py
-# ✅ 实时 ESG 新闻拉取模块（GNews API）
+# ✅ ESG Real-Time News Fetching Module (using GNews API)
 
 import requests
 
-GNEWS_API_KEY = "cdc38426e16a367f3035ce4998d977ed"  # 请替换为你自己的 API key
+GNEWS_API_KEY = "cdc38426e16a367f3035ce4998d977ed"  # Replace with your own GNews API key
 BASE_URL = "https://gnews.io/api/v4/search"
 
 def fetch_company_esg_news(company, query="ESG OR emission OR diversity", lang="en", max_results=10):
     """
-    拉取指定公司相关的 ESG 新闻（默认关键词：emission、diversity、ESG）
+    Fetch ESG-related news for a specified company.
+    Default keywords: ESG, emission, diversity
+    Returns a list of simplified article info (title, content, source, etc.)
     """
     q = f"{company} {query}"
     params = {
