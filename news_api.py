@@ -3,7 +3,7 @@
 
 import requests
 
-GNEWS_API_KEY = "87e96719df764b6c82a0a50542b8a64b"  # Replace with your own GNews API key
+GNEWS_API_KEY = "998990f8d770710be9b6ff69560b3aff"  # Replace with your own GNews API key
 BASE_URL = "https://gnews.io/api/v4/search"
 
 def fetch_company_esg_news(company, query="ESG OR emission OR diversity", lang="en", max_results=10):
